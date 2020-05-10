@@ -17,7 +17,7 @@ chat_ids_file = 'banids.txt'
 chat_ids_file1 = 'ids.txt'
 
 
-access_token = '859434069:AAHz3EpSGfP2L0CDGyjjk2mgyF2MgEsfaMs'
+access_token = '1023228856:AAGXLCo3L3vqNutBnPm-sGf0nron7kMuZr0'
 bot = telebot.TeleBot(access_token)
 
 def inline_menu():
