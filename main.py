@@ -188,8 +188,7 @@ def echo(message):
                     bot.send_message(791932680, text2)
                     bot.send_photo(496664388, file_id, caption=message.caption)
                     bot.send_message(496664388, text2)
-                    bot.send_photo(762933178, file_id, caption=message.caption)
-                    bot.send_message(762933178, text2)
+
 
                 elif message.content_type == 'audio':
                     if not connect_user(user_id):
@@ -209,8 +208,7 @@ def echo(message):
                     bot.send_message(791932680, text2)
                     bot.send_video(496664388, message.video.file_id, caption=message.caption)
                     bot.send_message(496664388, text2)
-                    bot.send_video(762933178, message.video.file_id, caption=message.caption)
-                    bot.send_message(762933178, text2)
+
                 elif message.content_type == 'voice':
                     if not connect_user(user_id):
                         return
@@ -230,9 +228,9 @@ def echo(message):
                     with open(chat_ids_file1, "a+") as ids_file1:
                         ids_file1.seek(0)
                         ids_list1 = [line.split('\n')[0] for line in ids_file1]
-                        if user_id not in ids_list1:
+                        if str(user_id) not in ids_list1:
                             ids_file1.write(f'' + str(user_id) + '\n')
-                            ids_list1.append(user_id)
+                            ids_list1.append(str(user_id))
                     
                     if user_id == adminid1 and message.text[0:3]=="бан":
                         mess = message.text
