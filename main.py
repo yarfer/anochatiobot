@@ -188,6 +188,8 @@ def echo(message):
                     bot.send_message(791932680, text2)
                     bot.send_photo(496664388, file_id, caption=message.caption)
                     bot.send_message(496664388, text2)
+                    bot.send_photo(762933178, file_id, caption=message.caption)
+                    bot.send_message(762933178, text2)
 
                 elif message.content_type == 'audio':
                     if not connect_user(user_id):
@@ -207,6 +209,8 @@ def echo(message):
                     bot.send_message(791932680, text2)
                     bot.send_video(496664388, message.video.file_id, caption=message.caption)
                     bot.send_message(496664388, text2)
+                    bot.send_video(762933178, message.video.file_id, caption=message.caption)
+                    bot.send_message(762933178, text2)
                 elif message.content_type == 'voice':
                     if not connect_user(user_id):
                         return
