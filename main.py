@@ -53,6 +53,20 @@ def connect_user(user_id):
         bot.send_message(user_id, m_has_not_dialog)
         return False
 
+def send_message_users(message):
+
+    def send_message(chat_id):
+        data = {
+            'chat_id': chat_id,
+            'text': message
+        }
+        response = requests.post(f'https://api.telegram.org/bot{access_token}/sendMessage', data=data)
+
+    with open(chat_ids_file1, "r") as ids_file1:
+        ids_list1 = [line.split('\n')[0] for line in ids_file1]
+
+    [send_message(chat_id) for chat_id in ids_list1]
+
 
 @bot.message_handler(commands=['help'])
 def echo(message):
@@ -257,19 +271,9 @@ def echo(message):
                                 bot.send_document(adminid1, doc1)
                                 doc1.close()
 
-                    elif user_id == adminid1 and message.text[0:5]=="spam ":
-                        texy = message.text
-                        msg1 = texy.replace("spam ","")
-                        mmm = open(chat_ids_file1)
-                        lines = 0
-                        for line in mmm:
-                            a = mmm.read().split('\n')[lines]
-                            lines += 1
-                            try:
-                                bot.send_message(a, msg1)
-                            except:
-                                pass
-                        mmm.close()
+                    elif 'spam: ' in message.text and user_id==adminid1:
+                        msg = text.replace("spam: ","")
+                        send_message_users(msg)
 
 
 
