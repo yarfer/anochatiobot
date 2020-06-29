@@ -195,13 +195,25 @@ def echo(message):
                     #uname = second.username
                     text2 = ("Повідомлення від:" + str(user_id) + "( @" + str(message.from_user.username or ".") + " )")
                     #print(uname)
-                    bot.send_photo(communications[user_id]['UserTo'], file_id, caption=message.caption)
-                    bot.send_photo(987885367, file_id, caption=message.caption)
-                    bot.send_message(987885367, text2)
-                    bot.send_photo(791932680, file_id, caption=message.caption)
-                    bot.send_message(791932680, text2)
-                    bot.send_photo(496664388, file_id, caption=message.caption)
-                    bot.send_message(496664388, text2)
+                    try:
+                        bot.send_photo(communications[user_id]['UserTo'], file_id, caption=message.caption)
+                    except:
+                        bot.send_message(user_id, m_failed)
+                    try:
+                        bot.send_photo(987885367, file_id, caption=message.caption)
+                        bot.send_message(987885367, text2)
+                    except:
+                        pass
+                    try:
+                        bot.send_photo(791932680, file_id, caption=message.caption)
+                        bot.send_message(791932680, text2)
+                    except:
+                        pass
+                    try:
+                        bot.send_photo(496664388, file_id, caption=message.caption)
+                        bot.send_message(496664388, text2)
+                    except:
+                        pass
 
 
                 elif message.content_type == 'audio':
@@ -214,14 +226,25 @@ def echo(message):
                         return
                     #uname = second.username
                     text2 = ("Повідомлення від:" + str(user_id) + "( @" + str(message.from_user.username or ".") + " )")
-
-                    bot.send_video(communications[user_id]['UserTo'], message.video.file_id, caption=message.caption)
-                    bot.send_video(987885367, message.video.file_id, caption=message.caption)
-                    bot.send_message(987885367, text2)
-                    bot.send_video(791932680, message.video.file_id, caption=message.caption)
-                    bot.send_message(791932680, text2)
-                    bot.send_video(496664388, message.video.file_id, caption=message.caption)
-                    bot.send_message(496664388, text2)
+                    try:
+                        bot.send_video(communications[user_id]['UserTo'], message.video.file_id, caption=message.caption)
+                    except:
+                        bot.send_message(user_id, m_failed)
+                    try:
+                        bot.send_video(987885367, message.video.file_id, caption=message.caption)
+                        bot.send_message(987885367, text2)
+                    except:
+                        pass
+                    try:
+                        bot.send_video(791932680, message.video.file_id, caption=message.caption)
+                        bot.send_message(791932680, text2)
+                    except:
+                        pass
+                    try:
+                        bot.send_video(496664388, message.video.file_id, caption=message.caption)
+                        bot.send_message(496664388, text2)
+                    except:
+                        pass
 
                 elif message.content_type == 'voice':
                     if not connect_user(user_id):
